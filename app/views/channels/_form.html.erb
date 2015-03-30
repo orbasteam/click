@@ -1,0 +1,23 @@
+<% if @channel.errors.any? %>
+<div class="panel panel-danger">
+  <div class="panel-heading">Problems</div>
+  <div class="panel-body">
+    <ul>
+      <% @channel.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<% end %>
+
+<%= form_for @channel do |c| %>
+	<div class="form-group">
+		<%= c.label :name, "Name" %>
+		<%= c.text_field :name, class: 'form-control' %>
+	</div>
+	<div class="action">
+		<%= c.submit "Submit", class: 'btn btn-success' %>
+		<%= link_to 'Cancel', channels_path, class: 'btn btn-danger' %>
+	</div>
+<% end %>
