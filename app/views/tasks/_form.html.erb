@@ -1,0 +1,43 @@
+<% if @task.errors.any? %>
+<div class="panel panel-danger">
+  <div class="panel-heading">Problems</div>
+  <div class="panel-body">
+    <ul>
+      <% @task.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<% end %>
+
+
+
+<%= form_for @task do |t| %>
+
+<div class="form-group">
+	<%= t.label :channel_id, 'Channel' %>
+	<%= t.select :channel_id, options_from_collection_for_select(@channels, :id, :name), {}, { class: 'form-control' } %>
+</div>
+
+<div class="form-group">
+	<%= t.label :name, 'Name' %>
+	<%= t.text_field :name, class: 'form-control' %>
+</div>
+
+<div class="form-group">
+	<%= t.label :description, 'Description' %>
+	<%= t.text_area :description, class: 'form-control' %>
+</div>
+
+<div class="form-group">
+	<%= t.label :target_url, 'Target Url' %>
+	<%= t.text_field :target_url, class: 'form-control' %>
+</div>
+
+<div class="form-action">
+	<%= t.submit 'Submit', class: 'btn btn-success' %>
+	<%= link_to 'Cancel', tasks_path, class: 'btn btn-danger' %>
+</div>
+
+<% end %>
