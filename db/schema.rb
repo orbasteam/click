@@ -11,9 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150330074102) do
+ActiveRecord::Schema.define(version: 20150331071527) do
 
 # Could not dump table "channels" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
+
+  create_table "tasks", force: :cascade do |t|
+    t.integer  "channel_id"
+    t.string   "name"
+    t.text     "target_url"
+    t.integer  "count",       default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.text     "description"
+  end
+
+  add_index "tasks", ["channel_id"], name: "index_tasks_on_channel_id"
 
 end

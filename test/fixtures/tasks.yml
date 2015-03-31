@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  channel_id: 
+  name: MyString
+  target_url: MyText
+  count: 1
+
+two:
+  channel_id: 
+  name: MyString
+  target_url: MyText
+  count: 1
