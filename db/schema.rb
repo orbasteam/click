@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150331073924) do
+ActiveRecord::Schema.define(version: 20150402032751) do
 
 # Could not dump table "channels" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
@@ -20,9 +20,8 @@ ActiveRecord::Schema.define(version: 20150331073924) do
     t.integer  "channel_id"
     t.string   "name"
     t.text     "target_url"
-    t.integer  "count",       default: 0
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.text     "description"
     t.string   "token"
   end

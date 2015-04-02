@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
 
 	before_action :set_data, only: [:edit, :update, :destroy]
-	before_action :set_channels, only: [:edit, :new]
+	before_action :set_channels, only: [:index, :edit, :new]
 
   def index
   	@tasks = Task.includes(:channel)

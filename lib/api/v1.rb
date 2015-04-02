@@ -10,7 +10,10 @@ module Api
     		end
 
     		task = task.take
-    		task.count = task.count + 1
+
+            # Save to another place
+    		# task.count = task.count + 1
+
     		task.save
 
             redirect task.target_url
