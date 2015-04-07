@@ -3,6 +3,7 @@ class ChannelsController < ApplicationController
 	before_action :set_data, only: [:edit, :update, :destroy]
 
 	def index
+		@test = env['REMOTE_ADDR']
 		@channels = Channel.all
 	end
 

@@ -5,21 +5,22 @@ module Api
     	begin
     		
     		task = Task.includes(:channel).where(token: params[:token], channels: { name: params[:channel] })
+
     		if !task.exists?
     			raise 'data error'
     		end
 
     		task = task.take
 
-            # Save to another place
-    		# task.count = task.count + 1
-
-    		task.save
+            log = Log.new
+            log.task_id = task.id
+            log.ip = request.env['REMOTE_ADDR']
+            log.save
 
             redirect task.target_url
 
     	rescue
-    		puts $!
+    		p $!
     	end
     end
   end
