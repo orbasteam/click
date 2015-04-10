@@ -1,6 +1,3 @@
-class Channel
-	include Mongoid::Document
-	include Mongoid::Timestamps
-  field :name, type: String
+class Channel < ActiveRecord::Base
   validates :name, presence: true
 end
