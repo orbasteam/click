@@ -1,0 +1,42 @@
+
+---
+channels:
+  columns:
+  - id
+  - name
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - Stylewall
+    - '2015-03-30 03:41:52.111785'
+    - '2015-03-30 09:30:55.255551'
+  - - 4
+    - Active
+    - '2015-03-30 09:09:15.685339'
+    - '2015-03-30 09:09:15.685339'
+  - - 5
+    - News
+    - '2015-03-30 09:09:20.193640'
+    - '2015-03-30 09:09:20.193640'
+
+---
+tasks:
+  columns:
+  - id
+  - channel_id
+  - name
+  - target_url
+  - created_at
+  - updated_at
+  - description
+  - token
+  records: 
+  - - 2
+    - 1
+    - "九宮格"
+    - http://apple.com.tw
+    - '2015-03-31 08:48:22.682172'
+    - '2015-04-01 07:46:23.002180'
+    - "右上角"
+    - 88f210c1e757b7eb5ef0275bd5ca49

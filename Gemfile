@@ -1,18 +1,14 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
 
 # Use MongoDB
 # gem 'mongoid', '~> 4', github: 'mongoid/mongoid'
 # gem 'bson_ext'
-
-# Use Redis
-gem 'redis-rails'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -32,9 +28,27 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+### custom gem start
+
+# API 使用的輕量級 framework
 gem 'sinatra'
+
+# Bootstrap
 gem 'bootstrap-sass'
+
+# 會員登入用
 gem 'devise'
+
+# Use Redis to handle api
+gem 'redis-rails'
+
+# sqlite3 資料庫備份
+gem 'yaml_db'
+
+# Use MySQL to handle workbench
+gem 'mysql'
+
+### custom gem end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -13,19 +13,22 @@
 
 ActiveRecord::Schema.define(version: 20150402032751) do
 
-# Could not dump table "channels" because of following NoMethodError
-#   undefined method `[]' for nil:NilClass
-
-  create_table "tasks", force: :cascade do |t|
-    t.integer  "channel_id"
-    t.string   "name"
-    t.text     "target_url"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.text     "description"
-    t.string   "token"
+  create_table "channels", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
-  add_index "tasks", ["channel_id"], name: "index_tasks_on_channel_id"
+  create_table "tasks", force: :cascade do |t|
+    t.integer  "channel_id",  limit: 4
+    t.string   "name",        limit: 255
+    t.text     "target_url",  limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.text     "description", limit: 65535
+    t.string   "token",       limit: 255
+  end
+
+  add_index "tasks", ["channel_id"], name: "index_tasks_on_channel_id", using: :btree
 
 end
