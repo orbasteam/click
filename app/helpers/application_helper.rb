@@ -1,5 +1,6 @@
 module ApplicationHelper
 	def navi_li(title, path, match_controller)
-		"<li #{ 'class="active"' if match_controller == params[:controller] }>#{link_to title, path}</li>".html_safe
+		active = (match_controller == params[:controller]) ? 'active' : ''
+		content_tag :li, link_to(title, path), class: active
 	end
 end
