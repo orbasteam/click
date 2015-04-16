@@ -6,6 +6,6 @@ class Task < ActiveRecord::Base
   validates_presence_of :name, :target_url
 
   def generate_token
-  	self.token = SecureRandom.base64(20)
+  	self.token = SecureRandom.hex(20)
   end
 end
