@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ip: MyString
+  referer: MyString
+  agent: MyText
+  click_time: 2015-04-22 17:40:12
+  token: MyString
+
+two:
+  ip: MyString
+  referer: MyString
+  agent: MyText
+  click_time: 2015-04-22 17:40:12
+  token: MyString

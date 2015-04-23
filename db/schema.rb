@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150402032751) do
+ActiveRecord::Schema.define(version: 20150422104659) do
 
   create_table "channels", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -19,14 +19,33 @@ ActiveRecord::Schema.define(version: 20150402032751) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "logs", force: :cascade do |t|
+    t.string   "ip",           limit: 255
+    t.string   "referer",      limit: 255
+    t.text     "agent",        limit: 65535
+    t.datetime "click_time"
+    t.string   "token",        limit: 255
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "redis_log_id", limit: 255
+  end
+
+  create_table "task_error_logs", force: :cascade do |t|
+    t.string   "task_name",   limit: 255
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.integer  "channel_id",  limit: 4
     t.string   "name",        limit: 255
     t.text     "target_url",  limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.text     "description", limit: 65535
     t.string   "token",       limit: 255
+    t.integer  "click_count", limit: 4,     default: 0
   end
 
   add_index "tasks", ["channel_id"], name: "index_tasks_on_channel_id", using: :btree
