@@ -1,9 +1,7 @@
 namespace :click do	
 	desc '將 log 統計儲存至 RDS'
 	task :log_result, [:minute] => [:environment] do |a, args|
-
 		begin
-
 			# 沒有傳入參數就以十分鐘為預設值
 			args.with_defaults minute: 10
 
@@ -40,7 +38,6 @@ namespace :click do
 					end
 				end
 			end
-
 		rescue
 			error = TaskErrorLog.new
 			error.description = $!
@@ -48,6 +45,5 @@ namespace :click do
 			error.save
 			p $!
 		end
-
 	end
 end

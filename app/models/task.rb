@@ -1,6 +1,6 @@
 class Task < ActiveRecord::Base
 
-	before_validation :generate_token
+	before_create :generate_token
   belongs_to :channel
 
   validates_presence_of :name, :target_url

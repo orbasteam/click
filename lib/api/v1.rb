@@ -6,11 +6,12 @@ module Api
     		
     		task = Task.where(token: params[:token])
     		if !task.exists?
-    			raise 'data error'
+    			raise "token : #{params[:token]}, task doesn't exists"
     		end
 
           id = $redis.incr 'logs'
 
+          # 紀錄此次點擊 log
           $redis.mapped_hmset "logs:#{id}", {
             id: id,
             ip: request.env['REMOTE_ADDR'],
@@ -29,7 +30,12 @@ module Api
           # redirect task.take.target_url
 
     	rescue
-    		p $!
+        # 紀錄錯誤 log 並導向 FG 首頁  
+        error = TaskErrorLog.new
+        error.description = $!
+        error.task_name = :v1_entrance
+        error.save
+        redirect 'http://www.fashionguide.com.tw/'
     	end
     end
   end

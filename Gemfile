@@ -41,8 +41,6 @@ gem 'devise'
 
 # Use Redis to handle api
 gem 'redis'
-gem 'redis-namespace'
-gem 'redis-objects'
 
 # sqlite3 資料庫備份
 gem 'yaml_db'
