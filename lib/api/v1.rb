@@ -3,7 +3,7 @@ module Api
   class V1 < Sinatra::Application
     get '/:token' do
     	begin
-    		
+
     		task = Task.where(token: params[:token])
     		if !task.exists?
     			raise "token : #{params[:token]}, task doesn't exists"
@@ -22,15 +22,13 @@ module Api
           }
 
           # add timestamp key
-          t = Time.now
-          time_key = t.strftime('%Y-%m-%d-%H-%M')
-          $redis.rpush time_key, id
+          $redis.rpush Time.minute_idx, id
 
           # 測試先不用導向
           # redirect task.take.target_url
 
     	rescue
-        # 紀錄錯誤 log 並導向 FG 首頁  
+        # 紀錄錯誤 log 並導向 FG 首頁
         error = TaskErrorLog.new
         error.description = $!
         error.task_name = :v1_entrance
