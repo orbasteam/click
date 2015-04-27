@@ -1,5 +1,5 @@
 class AddUniqueForChannelsName < ActiveRecord::Migration
   def change
-  	change_column :channels, :name, :unique
+    add_index :channels, :name, :unique => true
   end
 end
