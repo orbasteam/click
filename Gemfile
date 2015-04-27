@@ -46,7 +46,7 @@ gem 'redis'
 gem 'yaml_db'
 
 # Use MySQL to handle workbench
-gem 'mysql'
+gem 'mysql2'
 
 ### custom gem end
 

@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20150422104659) do
     t.datetime "updated_at",             null: false
   end
 
+  add_index "channels", ["name"], name: "index_channels_on_name", unique: true, using: :btree
+
   create_table "logs", force: :cascade do |t|
     t.string   "ip",           limit: 255
     t.string   "referer",      limit: 255
@@ -50,4 +52,5 @@ ActiveRecord::Schema.define(version: 20150422104659) do
 
   add_index "tasks", ["channel_id"], name: "index_tasks_on_channel_id", using: :btree
 
+  add_foreign_key "tasks", "channels"
 end
