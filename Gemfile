@@ -48,6 +48,9 @@ gem 'yaml_db'
 # Use MySQL to handle workbench
 gem 'mysql2'
 
+# Use whenever to handle cron job
+gem 'whenever', :require => false
+
 ### custom gem end
 
 # Use ActiveModel has_secure_password

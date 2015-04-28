@@ -1,11 +1,11 @@
 class TasksController < ApplicationController
 
-
 	before_action :task_params, only: [:edit, :update, :destroy]
 	before_action :set_channels, only: [:index, :edit, :new]
 
   def index
-  	@tasks = Task.includes(:channel)
+    channel = params[:channel] ? params[:channel] : 1
+    @tasks = Task.includes(:channel).filter_channel(channel)
   end
 
   def new
