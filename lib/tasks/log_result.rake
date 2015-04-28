@@ -5,7 +5,6 @@ namespace :click do
 			# 沒有傳入參數就以十分鐘為預設值
 			args.with_defaults minute: 10
 
-			#$redis = Redis.new
 			time_now = Time.now
 			time_format = '%Y-%m-%d-%H-%M'
 
@@ -22,12 +21,7 @@ namespace :click do
 
 					# 儲存原始 log
 					log = Log.new
-					log.redis_log_id = logs['id']
-					log.ip = logs['ip']
-					log.referer = logs['referer']
-					log.agent = logs['agent']
-					log.click_time = logs['click_time']
-					log.token = logs['token']
+					log.assemble_log logs
 					log.save
 
 					# 加入 count 到該 task

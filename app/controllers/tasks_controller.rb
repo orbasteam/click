@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
 
 
-	before_action :set_data, only: [:edit, :update, :destroy]
+	before_action :task_params, only: [:edit, :update, :destroy]
 	before_action :set_channels, only: [:index, :edit, :new]
 
   def index
@@ -13,7 +13,7 @@ class TasksController < ApplicationController
   end
 
   def create
-  	@task = Task.new(clean_data)
+  	@task = Task.new(task_data)
   	if @task.save
   		redirect_to tasks_path, flash: { notice: 'Create successfuly' }
   	else
@@ -25,7 +25,7 @@ class TasksController < ApplicationController
   end
 
   def update
-  	if @task.update(clean_data)
+  	if @task.update(task_data)
   		redirect_to tasks_path, flash: { notice: 'Update successfuly' }
   	else
   		render :edit
@@ -42,7 +42,7 @@ class TasksController < ApplicationController
   end
 
   private
-  	def set_data
+  	def task_params
   		@task = Task.find_by(id: params[:id])
   	end
 
@@ -50,7 +50,7 @@ class TasksController < ApplicationController
   		@channels = Channel.all
   	end
 
-  	def clean_data
+  	def task_data
   		params.require(:task).permit(:name, :channel_id, :target_url, :description)
   	end
 end

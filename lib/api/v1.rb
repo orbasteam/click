@@ -18,7 +18,7 @@ module Api
             referer: request.env['HTTP_REFERER'],
             agent: request.env['HTTP_USER_AGENT'],
             token: params[:token],
-            click_time: Time.now.strftime('%Y/%m/%d %H:%M:%S')
+            click_time: Time.now.to_s(:click)
           }
 
           # add timestamp key

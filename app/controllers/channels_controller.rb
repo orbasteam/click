@@ -1,6 +1,6 @@
 class ChannelsController < ApplicationController
 
-	before_action :set_data, only: [:edit, :update, :destroy]
+	before_action :channel_params, only: [:edit, :update, :destroy]
 
 	def index
 		@channels = Channel.all
@@ -11,7 +11,7 @@ class ChannelsController < ApplicationController
 	end
 
 	def create
-		@channel = Channel.new(clean_data)
+		@channel = Channel.new(channel_data)
 		if @channel.save
 			redirect_to channels_path, flash: { notice: 'Create successfuly' }
 		else
@@ -23,7 +23,7 @@ class ChannelsController < ApplicationController
 	end
 
 	def update
-		if @channel.update(clean_data)
+		if @channel.update(channel_data)
 			redirect_to channels_path, flash: { notice: 'Update successfuly' }
 		else
 			render :edit
@@ -44,11 +44,11 @@ class ChannelsController < ApplicationController
 	end
 
 	private
-		def clean_data
+		def channel_data
 			params.require(:channel).permit(:name)
 		end
 
-		def set_data
+		def channel_params
 			@channel = Channel.find_by(id: params[:id])
 		end
 end
