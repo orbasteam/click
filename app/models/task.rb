@@ -3,6 +3,8 @@ class Task < ActiveRecord::Base
 	before_create :generate_token
   belongs_to :channel
 
+  scope :channel, -> (channel_id) { where(channel_id: channel_id) }
+
   validates_presence_of :name, :target_url
 
   def generate_token

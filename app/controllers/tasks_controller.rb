@@ -4,8 +4,10 @@ class TasksController < ApplicationController
 	before_action :set_channels, only: [:index, :edit, :new]
 
   def index
-    channel = params[:channel] ? params[:channel] : 1
-    @tasks = Task.includes(:channel).filter_channel(channel)
+    Task.includes(:channel)
+    if !params[:channel].nil?
+      @tasks = Task.channel(params[:channel])
+    end
   end
 
   def new
